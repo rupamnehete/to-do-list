@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To Do List</title>
+</head>
+<body>
+		<div class="container">		  
+			<app-control
+				(createClick)="createNewTask($event)"
+				(handleFilter)="handleFilter($event)"
+				[control]="control"
+			></app-control>
+		
+			<div class="panel panel-success">
+				<div class="panel-heading">Task List</div>
+				<app-tatble 
+					[data]="filterData()"
+					(deleteTask)="deleteTask($event)"
+					(editTask)="editTask($event)"
+				></app-tatble>
+			</div>
+		</div>
+
+</body>
+</html>

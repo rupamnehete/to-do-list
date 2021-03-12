@@ -1,0 +1,42 @@
+<div *ngIf="!isCreate"class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+  <button (click)="isCreate = true" type="button" class="btn btn-primary btn-lg btn-block marginB10">Add Task</button>
+</div>
+<div *ngIf="isCreate" class="row" style="margin-bottom: 10px">
+  <div class="col-md-5">
+    <form class="form-inline" (ngSubmit)="onSubmit(form)" #form="ngForm">
+
+      <div class="addTask">
+    <!-- date -->
+    <div class="form-group">
+      <p> Select date : 
+      <input ngModel required name="date" type="date" class="form-control" [ngClass]="{error: isSubmit && txtName.invalid}" #txtName="ngModel" placeholder="Enter your Task" />
+    </p>
+    </div>
+
+<!-- date ends -->
+
+      <div class="form-group">
+        <p> Enter Your Task : 
+        <input ngModel required name="name" type="text" class="form-control" [ngClass]="{error: isSubmit && txtName.invalid}" #txtName="ngModel" placeholder="Enter your Task" />
+      </p>
+      </div>
+
+<div class="status">      
+      <div class="form-group">
+        <p> Status :  
+        <select required name="level" [ngModel]="'1'" class="form-control">
+          <option value="1">Active</option>
+          <option value="2">Inactive</option>
+        </select>
+      </p>
+      </div>
+    </div>
+
+      <div class="action" style="margin-top: 20px;">
+      <button type="button" type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" (click)="isCreate = false" class="btn btn-default">Cancel</button>
+    </div>
+  </div>
+    </form>
+  </div>
+</div>
